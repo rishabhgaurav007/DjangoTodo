@@ -13,7 +13,8 @@ def index(request):
 
 @require_POST
 def addTodo(request):
-    form=TodoForm(request.POST['text'])
+    form=TodoForm(request.POST)
+    print(request.POST['text'])
     if form.is_valid():
         new_todo = Todo(text=request.POST['text'])
         new_todo.save()
